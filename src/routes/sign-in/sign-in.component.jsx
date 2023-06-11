@@ -4,6 +4,7 @@ import { getRedirectResult } from 'firebase/auth'
 import styled from 'styled-components'
 import { auth, createUserDocumentFromAuth, signInWithGooglePopup, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
 
+import Button from '../../components/button/button.component'
 import { SignUp } from '../../components/sign-up/SignUp'
 
 const SignIn = () => {
@@ -31,7 +32,7 @@ const logGoogleUser = async () => {
   return (
    <Wrapper>
     <h1>Sign In Page</h1>
-    <button onClick={logGoogleUser}>Sign In With Google</button> 
+    <Button buttonType='google' onClick={logGoogleUser}>Sign In With Google</Button> 
     {/* <button onClick={signInWithGoogleRedirect}>Sign In With Google Redirect</button> */}
     <SignUp /> 
    </Wrapper>
