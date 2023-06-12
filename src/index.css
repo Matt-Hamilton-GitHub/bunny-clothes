@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Courier Prime', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -17,4 +17,12 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1{
+  font-family: 'Courier Prime', monospace;
+}
+
+h2{
+  font-family: 'Courier Prime', monospace;
 }

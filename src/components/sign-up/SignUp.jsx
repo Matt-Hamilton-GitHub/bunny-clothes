@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { useState } from 'react'
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils'
-
 import Button from '../button/button.component'
 import FormInput from '../form-input/FormInput'
 export const SignUp = () => {
@@ -16,11 +15,11 @@ export const SignUp = () => {
 
     const [formField, setFormField] = useState(defaultFormFields);
     const {displayName, email, password, confirmPassword} = formField;
+    
 
     console.log(formField)
     const handleChange = (e) => {
-     const {name, value} = e.target;
-
+    const {name, value} = e.target
      setFormField({...formField, [name]: value})
     }
     
@@ -41,11 +40,9 @@ export const SignUp = () => {
         }catch(err){
             if(err.code === "auth/email-already-in-use"){
                 alert("The email is already in use")
-               
             }
             console.log(err);
         }
-
     }
 
   return (
@@ -57,22 +54,21 @@ export const SignUp = () => {
             <FormInput label='Email' type="email" required onChange={handleChange} name='email' value={email}></FormInput>
             <FormInput label='Password'  type="password" required onChange={handleChange} name='password' value={password}></FormInput>
             <FormInput label='Confirm Password'  type="password" required onChange={handleChange} name='confirmPassword' value={confirmPassword}></FormInput>
+            <Button buttonType='inverted' type="submit">Sign Up</Button>
         </form> 
-        <Button buttonType='inverted' type="submit">Sign Up</Button>
+       
     </Wrapper>
   )
 }
 
 
 const Wrapper = styled.div`
-
+font-family: 'Courier Prime', monospace;
 display: flex;
 flex-direction: column;
 width: 380px;
 margin: 20px;
 text-align: center;
-
-
 
 h2{  
 margin: 10px 0;

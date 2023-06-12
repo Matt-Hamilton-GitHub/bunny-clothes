@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState } from 'react'
+import {useState} from 'react'
 import styled from 'styled-components'
 import {signInWithGooglePopup, createAuthUserWithEmailAndPassword, createUserDocumentFromAuth, loginAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils'
 // import { getRedirectResult } from 'firebase/auth'
@@ -37,10 +37,10 @@ const SignIn = () => {
     // }, [])
 
 
-const signInWithGoogle = async () => {
-    const {user} = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user)
-}
+
+    const signInWithGoogle = async () => {
+        const {user} = await signInWithGooglePopup();
+    }
 
 
     const handleSubmit = async (e) => {
@@ -50,6 +50,7 @@ const signInWithGoogle = async () => {
         try {
             const {user} = await loginAuthUserWithEmailAndPassword(email, password);
             console.log(user)
+         
             setFormField(defaultFormFields)
         }catch(err){
             if(err.code === "auth/user-not-found"){
@@ -90,7 +91,7 @@ flex-direction: column;
 width: 380px;
 margin: 20px;
 text-align: center;
-
+font-family: 'Courier Prime', monospace;
 h2{  
 margin: 10px 0;
 }

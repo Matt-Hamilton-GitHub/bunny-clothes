@@ -37,8 +37,9 @@ const Wrapper = styled.div`
     background-color: black;
     color: white;
     text-transform: uppercase;
-    font-family: 'Open Sans Condensed';
-    font-weight: bolder;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 900;
+    letter-spacing: 1px;
     border: none;
     cursor: pointer;
     display: flex;

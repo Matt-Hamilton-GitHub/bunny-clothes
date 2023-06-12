@@ -1,5 +1,4 @@
 import './App.css';
-import './categories.styles.scss'
 import {Routes, Route} from 'react-router-dom'
 
 //components
