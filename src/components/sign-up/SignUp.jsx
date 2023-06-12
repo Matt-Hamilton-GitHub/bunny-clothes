@@ -57,9 +57,8 @@ export const SignUp = () => {
             <FormInput label='Email' type="email" required onChange={handleChange} name='email' value={email}></FormInput>
             <FormInput label='Password'  type="password" required onChange={handleChange} name='password' value={password}></FormInput>
             <FormInput label='Confirm Password'  type="password" required onChange={handleChange} name='confirmPassword' value={confirmPassword}></FormInput>
-
-            <Button buttonType='inverted' type="submit">Sign Up</Button>
         </form> 
+        <Button buttonType='inverted' type="submit">Sign Up</Button>
     </Wrapper>
   )
 }
@@ -67,9 +66,13 @@ export const SignUp = () => {
 
 const Wrapper = styled.div`
 
-display:flex;
+display: flex;
 flex-direction: column;
 width: 380px;
+margin: 20px;
+text-align: center;
+
+
 
 h2{  
 margin: 10px 0;
