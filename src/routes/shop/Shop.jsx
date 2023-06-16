@@ -12,7 +12,7 @@ import './shop.styles.scss'
     <div className='products-container'>
         {allProducts.map((item, id) => {
             return(
-            <ProductCard product={item}/>
+            <ProductCard key={id} product={item}/>
             )
         })}
     </div>

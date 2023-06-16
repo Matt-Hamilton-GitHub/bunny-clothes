@@ -5,14 +5,23 @@ import {Outlet, Link} from 'react-router-dom'
 import styled from 'styled-components'
 import bunnyLogo from '../assets/logo2.png'
 import { signOutUser } from '../utils/firebase/firebase.utils'
+
+//components
+import CartIcon from '../components/cart-icon/CartIcon'
+import CartDropdown from '../components/cart-dropdown/CartDropdown'
+import { CartContext } from '../context/cart.context'
+
  const Navigation = () =>{
 
 const { currentUser } = useContext(UserContext);
+const {cartItems,  setCartItems, isCartOpen, setIsCartOpen} = useContext(CartContext)
+
 // console.log(currentUser)
 
 const signOutHandler = async () =>{
   await signOutUser()
 }
+
 
     return(
       <Fragment>
@@ -30,7 +39,9 @@ const signOutHandler = async () =>{
                   SIGN-IN
              </Link>)}
             
+            <CartIcon />
           </div>
+          {isCartOpen && <CartDropdown /> }
         </Wrapper>
         <Outlet />
       </Fragment>
@@ -41,7 +52,7 @@ const signOutHandler = async () =>{
   export default Navigation;
 
   const Wrapper = styled.div`
-
+  padding: 0;
   height: 70px;
   width: 100%;
   display: flex;
@@ -51,10 +62,10 @@ const signOutHandler = async () =>{
   .logo-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
-    padding: 25px;
-    background-color: #7e0026;
+    height: 75%;
+    width: 75%;
+    
+    /* background-color: #7e0026; */
   }
 
   .bunny-div{
@@ -69,7 +80,7 @@ const signOutHandler = async () =>{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: #c1bfbf;
+    /* background-color: #c1bfbf; */
 
     .nav-link {
       padding: 10px 15px;
@@ -78,8 +89,8 @@ const signOutHandler = async () =>{
   }
 
   .logo-container img {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    
    
   }
   `
