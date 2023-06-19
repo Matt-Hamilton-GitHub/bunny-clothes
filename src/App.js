@@ -8,6 +8,7 @@ import Home from './routes/home/home.component';
 import Error from './routes/Error';
 import Authentication from './routes/authentication/authentication';
 import Shop from './routes/shop/Shop';
+import CheckOut from './components/checkout/CheckOut';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path='/auth' element={<Authentication/>}/>
         <Route path='/shop' element={<Shop/>}/>
+        <Route path='/check-out' element={<CheckOut />}/>
       </Route>
       <Route path='*' element={<Error />} />
     </Routes>

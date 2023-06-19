@@ -5,7 +5,7 @@ import { CartContext } from '../../context/cart.context'
 const CartIcon = () => {
 
   const {isCartOpen, setIsCartOpen, cartItems} = useContext(CartContext)
-  const getTotalItems = () => cartItems.reduce((total, curr) =>total + curr.quantity ,0)
+  const getTotalItems = () => cartItems.reduce((total, curr) => total + curr.quantity, 0)
 
   
   return (
