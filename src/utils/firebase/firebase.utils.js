@@ -7,7 +7,7 @@ import {getAuth, signOut,
    signInWithEmailAndPassword,
    onAuthStateChanged,
   } from 'firebase/auth'
-import {getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
+import {getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: "AIzaSyAXuazKChNQRY0h-0LXTzE82ZvHqFxwq8w",
@@ -32,10 +32,9 @@ const firebaseConfig = {
   export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
   export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider)
   
-  //use the database connection
+
 
   //#1 initiate
-  export const db = getFirestore();
 
   export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) =>{
     if (!userAuth) return;
@@ -86,3 +85,44 @@ const firebaseConfig = {
 
   
   
+                                //------FirestoreDB------
+
+export const db = getFirestore();
+
+export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+ //use writeBatch to perform a successful operation/transaction
+  const batch = writeBatch(db);
+
+
+  objectToAdd.forEach((object) => {
+    //get the doc reference (ref, title/key of the object)
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    //set (location, value) location with value 
+    batch.set(docRef,  object)
+  })
+
+  await batch.commit()
+  console.log('done batching')
+
+}
+
+  export const getCategoriesAndDocuments = async () => {
+    const collectionRef = collection(db, 'categories');
+    //generate a query of a the collection
+    const q = query(collectionRef)
+    // console.log(q)
+    //
+    const querySnapshot = await getDocs(q);
+    // console.log(querySnapshot)
+    
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+      const {title, items} = docSnapshot.data();
+      // console.log(docSnapshot.data().title)
+      acc[title.toLowerCase()] = items;
+      return acc
+     
+    }, {})
+
+    return categoryMap;
+  }
