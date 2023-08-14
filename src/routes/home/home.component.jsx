@@ -1,5 +1,5 @@
 import React from 'react'
-import Categories from '../../components/category-item/categories.component'
+import Categories from '../../components/directory-item/directory.component'
 import {Outlet} from 'react-router-dom'
 
 function Home() {

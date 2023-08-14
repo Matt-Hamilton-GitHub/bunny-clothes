@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import CategoryItem from './category-item.component';
+import CategoryItem from './directory-item.component';
 
 function Categories() {
 
