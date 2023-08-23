@@ -33,7 +33,7 @@ const CheckOut = () => {
     
     useEffect(() => {
         setIsCartOpen(false)
-    },[cartItems,  isUpdate])
+    },[cartItems, isUpdate])
  
   return (
 <Wrapper>
